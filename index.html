@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon"
+        href="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/799/original/icon.png?1703004478"
+        type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Persuasion by Jane Austen</title>
+    <style>
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            position: relative;
+            scroll-snap-type: y mandatory;
+            scroll-snap-points-y: repeat(100vh);
+        }
+
+        main {
+            height: 100%;
+            position: relative;
+        }
+
+        section {
+            display: grid;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            height: 100vh;
+            line-height: 1.4;
+            scroll-snap-align: center;
+            padding: 0 20px;
+            place-items: center;
+            position: relative;
+        }
+
+        .custom-nav .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 100%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .custom-nav .navbar-toggler {
+            border: 1px solid #ffffff;
+        }
+
+        .custom-nav a {
+            color: #ffffff;
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .custom-nav a:hover {
+            color: #93855a;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 1rem auto;
+            text-align: center;
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        a:hover {
+            color: #93855a;
+            text-decoration: none;
+        }
+
+        .link-light:hover {
+            color: #93855a !important;
+            text-decoration: none;
+        }
+
+        #top {
+            background-attachment: fixed;
+            background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/806/original/top.jpg?1703004523");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #top-text {
+            align-self: end;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            font-family: 'Playfair Display', sans-serif;
+            margin: 20px;
+            max-width: 750px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #about {
+            background: #86a1c0;
+        }
+
+        #about-card {
+            max-width: 800px;
+        }
+
+        #about-card-image {
+            border-radius: 4px;
+        }
+
+        #about-card-text {
+            background: #cfc1bd;
+            border-radius: 4px;
+            color: #000000;
+            padding: 20px;
+        }
+
+        #adaptations {
+            background: #cfc1bd;
+            color: #000000;
+            padding: 0;
+        }
+
+        .slide,
+        .carousel {
+            max-width: 768px;
+        }
+
+        .carousel-item img {
+            margin: auto;
+        }
+
+        #review {
+            background-attachment: fixed;
+            background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/805/original/review.JPG?1703004516");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 0;
+        }
+
+        #review-filter {
+            background: rgba(0, 0, 0, 0.25);
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            width: 100%;
+        }
+
+        #review-text {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        #read {
+            background: #a9bfda;
+            color: #000000;
+        }
+
+        .read-button {
+            margin: 0 20px;
+            width: 75px;
+        }
+
+        footer {
+            align-self: end;
+            background: #424d1a;
+            color: #ffffff;
+            font-size: 10px;
+            padding: 10px;
+            position: relative;
+            scroll-snap-stop: always;
+            scroll-snap-align: end;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffffff;
+        }
+
+        footer a:hover {
+            color: #93855a;
+            text-decoration: none;
+        }
+
+        @media (max-width: 576px) {
+            #about-card-text {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .carousel {
+                width: 100vw;
+            }
+
+            .carousel-item img {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <nav id="nav-bar" class="navbar navbar-expand-lg fixed-top custom-nav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/800/original/logo.png?1703004484"
+                        id="header-img" alt="Persuasion by Jane Austen" width="175" height="auto">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link" href="#top">Home</a>
+                        </li>
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link" href="#adaptations">Adaptations</a>
+                        </li>
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link" href="#review">Review</a>
+                        </li>
+                        <li class="nav-item ms-auto">
+                            <a class="nav-link" href="#read">Read</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="top">
+            <div id="top-text">
+                <h2>“You pierce my soul. I am half agony, half hope... I have loved none but <i>you</i>.”
+                </h2>
+            </div>
+        </section>
+
+        <section id="about">
+            <div id="about-card" class="row">
+                <div class="col d-none d-sm-block" id="about-card-image">
+                    <img src="
+                    https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/804/original/persuasion_book.jpg?1703004509"
+                        class="img-fluid rounded" alt="Persuasion by Jane Austen book cover" />
+                </div>
+                <div class="col">
+                    <div id="about-card-text" class="h-100">
+                        <h1>About</h1>
+                        <p class="mt-5">Persuasion is the last novel completed by the English author Jane Austen. It
+                            was
+                            published on 20
+                            December 1817, along
+                            with Northanger Abbey, six months after her death, although the title page is dated
+                            1818.
+                        </p>
+                        <p>
+                            The story concerns Anne Elliot, an Englishwoman of 27 years, whose family moves to lower
+                            their
+                            expenses and reduce their
+                            debt by renting their home to an admiral and his wife. The wife's brother, Captain
+                            Frederick
+                            Wentworth, was engaged to
+                            Anne in 1806, but the engagement was broken when Anne was persuaded by her friends and
+                            family to end
+                            their relationship.
+                            Anne and Captain Wentworth, both single and unattached, meet again after a separation
+                            lasting almost
+                            eight years,
+                            setting the scene for many humorous encounters as well as a second, well-considered
+                            chance at love
+                            and marriage for
+                            Anne.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="adaptations">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <h1>Adaptations</h1>
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/801/original/persuasion_1995.jpg?1703004492"
+                                class="d-block" alt="Persuasion BBC 1995">
+                            <div class="carousel-caption">
+                                <a href="https://www.youtube.com/watch?v=hN7j7Ey-cM0" target="_blank"
+                                    class="link-light">
+                                    <h5>BBC 1995</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/802/original/persuasion_2007.jpg?1703004498"
+                                class="d-block" alt="Persuasion ITV 2007">
+                            <div class="carousel-caption">
+                                <a href="https://tv.apple.com/gb/show/persuasion/umc.cmc.3no0p7cnkbel0cy2ayxuat0he"
+                                    target="_blank" class="link-light">
+                                    <h5>ITV 2007</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/107/803/original/persuasion_2022.jpg?1703004504"
+                                class="d-block" alt="Persuasion Netflix 2022">
+                            <div class="carousel-caption">
+                                <a href="https://www.netflix.com/title/81410649" target="_blank" class="link-light">
+                                    <h5>Netflix 2022</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="review">
+            <div id="review-filter">
+                <div id="review-text">
+                    <h1>Review</h1>
+                    <h3 class="mt-5">Growing up, Jane Austen's books taught me about being a <i>woman</i>.</h3>
+                    <h3 class="mt-3">Persuasion is my favorite because it is a story about <i>second chances</i>.</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="read">
+            <div class="text-center">
+                <h2 id="read-heading" class="mb-5">Have you read Persuasion?</h2>
+                <div>
+                    <button type="button" class="yes-button btn btn-dark read-button">Yes</button>
+                    <button type="button" class="no-button btn btn-dark read-button">No</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="text-center">
+            Made by <a href="https://www.shecodes.io/graduates/103966-kartina-mohd-sobri" target="_blank">Kat</a> for <a
+                href="https://www.shecodes.io/contests/life-changing-book" target="_blank">SheCodes Life-changing
+                Book Challenge</a>
+        </div>
+    </footer>
+
+    <script>
+        function updateHeading(newHeading) {
+            let heading = document.querySelector("#read-heading");
+            heading.innerHTML = newHeading;
+        }
+
+        function noRead() {
+            updateHeading(`I'm so jealous that you get to <a href="https://www.gutenberg.org/ebooks/105" target="_blank">read</a> it for the first time. 😄`);
+        }
+
+        let noButton = document.querySelector(".no-button");
+        noButton.addEventListener("click", noRead);
+
+        function yesRead() {
+            updateHeading(
+                `We're both in the Jane Austen Book Club. 😁`
+            );
+        }
+
+        let yesButton = document.querySelector(".yes-button");
+        yesButton.addEventListener("click", yesRead);
+    </script>
+
+</body>
+
+</html>
